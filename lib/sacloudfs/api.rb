@@ -1,11 +1,15 @@
 module Sacloudfs
   class Api
     # NOTE: See http://developer.sakura.ad.jp/cloud/api/1.1/
-    attr_reader :zone_name, :api_version
+    attr_reader :zone, :api_version, :access_token, :access_token_secret
 
-    def initialize(zone_name:, api_version:)
-      @zone_name = zone_name
-      @api_version = api_version
+    def initialize(zone)
+      @zone                = zone
+      sacloudfs_yml        = YAML.load_file(File.join(Dir.home, 'sacloudfs.yml'))
+      apikey_user          = sacloudfs_yml[ENV['APIKEY_USER']]
+      @api_version         = apikey_user.api_version
+      @access_token        = apikey_user.access_token
+      @access_token_secret = apikey_user.oaccess_token_secret
     end
 
     def domain
@@ -13,7 +17,7 @@ module Sacloudfs
     end
 
     def base_path
-      "/cloud/zone/#{zone_name}/api/cloud/#{api_version}"
+      "/cloud/zone/#{zone}/api/cloud/#{api_version}"
     end
 
     def endpoint_path(resource)
