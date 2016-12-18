@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'sacloudfs/rb/version'
+require 'sacloudfs/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'sacloudfs-rb'
-  spec.version       = Sacloudfs::Rb::VERSION
+  spec.version       = Sacloudfs::VERSION
   spec.authors       = ['Shingo Kawamura']
   spec.email         = ['blp1526@gmail.com']
 
