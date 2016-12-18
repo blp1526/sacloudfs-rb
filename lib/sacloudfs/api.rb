@@ -34,16 +34,11 @@ module Sacloudfs
       parsed_response_body(response)
     end
 
-    def post
-      raise 'Sorry, unimplemented'
-    end
+    private
 
-    def put
-      raise 'Sorry, unimplemented'
-    end
-
-    def delete
-      raise 'Sorry, unimplemented'
-    end
+      def parsed_response_body(response)
+        raise '404NotFoundError' if response.status == 404
+        JSON.parse(response.body)
+      end
   end
 end
