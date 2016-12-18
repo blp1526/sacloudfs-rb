@@ -1,4 +1,0 @@
-sample:
-  api_version: '1.1'
-  access_token: 'sample'
-  access_token_secret: 'sample'
