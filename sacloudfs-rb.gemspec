@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Shingo Kawamura']
   spec.email         = ['blp1526@gmail.com']
 
-  spec.summary       = 'A fuse filesystem'
-  spec.description   = 'A fuse filesystem'
+  spec.summary       = 'A fuse filesystem for SAKURA Cloud'
+  spec.description   = 'A fuse filesystem for SAKURA Cloud'
   spec.homepage      = 'https://github.com/blp1526/sacloudfs-rb'
   spec.license       = 'MIT'
 
@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.12'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'pry', '~> 0.10.4'
 end
