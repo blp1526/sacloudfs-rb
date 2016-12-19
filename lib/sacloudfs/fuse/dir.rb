@@ -10,7 +10,7 @@ module Sacloudfs
         when 1
           resources
         when 2
-          ids
+          ids(zone: items[0], resource: items[1])
         end
       end
 
@@ -20,7 +20,7 @@ module Sacloudfs
       end
 
       def read_file(path)
-        "sorry, unimplemented\n" if path
+        "Sorry, unimplemented.\n" if path
       end
 
       def directory?(path)
@@ -35,11 +35,12 @@ module Sacloudfs
         end
 
         def resources
-          %w(disk)
+          %w(server disk archive)
         end
 
-        def ids
-          %w(112800000001)
+        def ids(zone:, resource:)
+          api = ::Sacloudfs::Api.new(zone)
+          api.get(resource)[resource.pluralize.capitalize].map { |item| item['ID'] }
         end
 
         def valid_items?(items)

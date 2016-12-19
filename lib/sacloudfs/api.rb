@@ -5,11 +5,11 @@ module Sacloudfs
 
     def initialize(zone)
       @zone                = zone
-      sacloudfs_yml        = YAML.load_file(File.join(Dir.home, 'sacloudfs.yml'))
-      apikey_user          = sacloudfs_yml[ENV['APIKEY_USER']]
-      @api_version         = apikey_user.api_version
-      @access_token        = apikey_user.access_token
-      @access_token_secret = apikey_user.oaccess_token_secret
+      sacloudfs_yml        = ::YAML.load_file(File.join(Dir.home, '.sacloudfs.yml'))
+      # FIXME: token is expected to be managed by per account.
+      @api_version         = sacloudfs_yml['api_version']
+      @access_token        = sacloudfs_yml['access_token']
+      @access_token_secret = sacloudfs_yml['access_token_secret']
     end
 
     def domain
@@ -27,6 +27,7 @@ module Sacloudfs
     def conn
       Faraday.new(domain) do |faraday|
         faraday.request :url_encoded
+        faraday.basic_auth access_token, access_token_secret
         faraday.adapter Faraday.default_adapter
       end
     end
