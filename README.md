@@ -2,6 +2,10 @@
 
 Sorry, now experimental version.
 
+## Requirements
+
+FUSE for your OS.
+
 ## Installation
 
 First of all, you have to create SAKURA Cloud API key.
@@ -16,15 +20,21 @@ $ cp .sacloudfs.yml.sample ~/.sacloudfs.yml
 $ vi ~/.sacloudfs.yml
 ```
 
+Set your ACCESS TOKEN and ACCESS TOKEN SECRET to ~/.sacloudfs.yml.
+
 ## Usage
 
 ### mount
 
-```
-# terminal A
-$ bundle exec rake sacloudfs:mount mount_dir
+terminal A
 
-# terminal B
+```
+$ bundle exec rake sacloudfs:mount mount_dir
+```
+
+terminal B
+
+```
 $ ls mount_dir
 ```
 

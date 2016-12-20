@@ -31,7 +31,7 @@ module Sacloudfs
       private
 
         def zones
-          %w(is1a is1b tk1a)
+          %w(is1a is1b tk1a tk1v)
         end
 
         def resources
